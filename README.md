@@ -15,5 +15,5 @@ pip install -r requirements.txt
 3. Insira os valores de ear_limear e mar_limear, estes valores são responsáveis por definir se a boca está fechado ou aberta. (Consistem entre a média entre fechado e aberto)
 
 # Artigos Utilizados
-"Drowsiness Detection According to the Number of Blinking Eyes Specified from Eye Aspect Ratio Value Modification", escrito por Novie Pasaribu, Agus Prijono, Ratnadewi, Roy Adhie e Joseph Felix.
-"Real-Time Eye Blink Detection using Facial Landmarks" de Tereza Soukupová e Jan Cech
+## "Drowsiness Detection According to the Number of Blinking Eyes Specified from Eye Aspect Ratio Value Modification", escrito por Novie Pasaribu, Agus Prijono, Ratnadewi, Roy Adhie e Joseph Felix.
+## "Real-Time Eye Blink Detection using Facial Landmarks" de Tereza Soukupová e Jan Cech
