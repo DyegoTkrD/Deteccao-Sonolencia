@@ -1,19 +1,43 @@
-# Detecção de Sonolência com Visão Computacional
- Este projeto Python utiliza as bibliotecas numpy, cv2 (OpenCV), e mediapipe para detectar sonolência em pessoas. Vamos explorar os conceitos de EAR (Eye Aspect Ratio) e MAR (Mouth Aspect Ratio) para mapear a abertura e fechamento dos olhos e da boca, além de calcular a contagem de piscadas por minuto. Sendo assim possível detectar a sonolência das pessoas por meio do olho fechado por mais de 3 segundos ou se os olhos piscarem menos de 15 vezes por minuto. As métricas foram criadas utilizando pesquisas sobre sonolência.
+# Detecção de sonolência com visão computacional
 
-# Conceitos-Chave
-1. EAR (Eye Aspect Ratio)
-O EAR é uma métrica que avalia a abertura dos olhos. Ele é calculado com base nos pontos de referência dos olhos detectados na face. Quando os olhos estão fechados, o valor do EAR diminui, indicando sonolência.
+Detecta sinais de sonolência em tempo real pela câmera, usando os pontos do rosto mapeados pelo MediaPipe. O projeto mede a abertura dos olhos e da boca e conta as piscadas por minuto.
 
-2. MAR (Mouth Aspect Ratio)
-O MAR é outra técnica para detectar sinais de sonolência. Ele utiliza os pontos de referência na região da boca para calcular a relação de abertura da boca. Valores maiores de MAR indicam que o indivíduo está bocejando e, portanto, apresentando sinais de sonolência.
+## Como funciona
 
-# Implementação
-1. Instale as bibliotecas necessárias:
+1. O MediaPipe Face Mesh localiza os pontos de referência dos olhos e da boca em cada quadro capturado com OpenCV.
+2. Com esses pontos, o código calcula duas métricas:
+   - **EAR (Eye Aspect Ratio):** relação de abertura dos olhos. Cai quando o olho fecha.
+   - **MAR (Mouth Aspect Ratio):** relação de abertura da boca. Sobe quando a pessoa boceja.
+3. O sistema aponta sonolência quando:
+   - os olhos ficam fechados por **mais de 3 segundos**; ou
+   - a pessoa pisca **menos de 15 vezes por minuto**.
+
+Os limites vêm dos artigos citados abaixo.
+
+## Como rodar
+
+```bash
+git clone https://github.com/DyegoTkrD/Deteccao-Sonolencia
+cd Deteccao-Sonolencia
+python -m venv .venv
+source .venv/bin/activate   # no Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-2. Selecione a camera que será utilizada no arquivo projeto.ipynb.
-3. Insira os valores de ear_limear e mar_limear, estes valores são responsáveis por definir se a boca está fechado ou aberta. (Consistem entre a média entre fechado e aberto)
+jupyter notebook projeto.ipynb
+```
 
-# Artigos Utilizados
-## "Drowsiness Detection According to the Number of Blinking Eyes Specified from Eye Aspect Ratio Value Modification", escrito por Novie Pasaribu, Agus Prijono, Ratnadewi, Roy Adhie e Joseph Felix.
-## "Real-Time Eye Blink Detection using Facial Landmarks" de Tereza Soukupová e Jan Cech
+No notebook:
+1. Escolha a câmera que será usada.
+2. Ajuste `ear_limiar` e `mar_limiar`, os limites que separam olho e boca abertos de fechados. Um bom ponto de partida é a média entre o valor medido com olho (ou boca) aberto e fechado.
+
+## Stack
+
+Python · OpenCV · MediaPipe · NumPy
+
+## Referências
+
+- Pasaribu, N.; Prijono, A.; Ratnadewi; Adhie, R.; Felix, J. *Drowsiness Detection According to the Number of Blinking Eyes Specified from Eye Aspect Ratio Value Modification.*
+- Soukupová, T.; Čech, J. *Real-Time Eye Blink Detection using Facial Landmarks.*
+
+---
+
+Feito por [Dyego Seabra](https://dyegoseabra.com.br) · [LinkedIn](https://www.linkedin.com/in/dyegoseabradata)
