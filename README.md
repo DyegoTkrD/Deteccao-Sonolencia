@@ -2,6 +2,8 @@
 
 Detecta sinais de sonolência em tempo real pela câmera, usando os pontos do rosto mapeados pelo MediaPipe. O projeto mede a abertura dos olhos e da boca e conta as piscadas por minuto.
 
+![Detecção em tempo real: EAR, MAR, piscadas por minuto e alerta de olhos fechados](imagens/deteccao.jpg)
+
 ## Como funciona
 
 1. O MediaPipe Face Mesh localiza os pontos de referência dos olhos e da boca em cada quadro capturado com OpenCV.
